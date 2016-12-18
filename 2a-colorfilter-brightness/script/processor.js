@@ -8,7 +8,12 @@ var isFirefox = /Firefox/.test(navigator.userAgent);
 var isChrome = /Chrome/.test(navigator.userAgent);
 
 var config = {
-	color_offset: 0
+	color_offset: 0,
+	color_offset_r: 0,
+	color_offset_g: 0,
+	color_offset_b: 0,
+	grayscale: false,
+	sepia: false
 };
 
 var processor = {
@@ -25,7 +30,10 @@ var processor = {
 		config.color_offset_b = document.getElementById("color_offset_b").value;
 		this.log("color offset_b = "+config.color_offset_b);
 	},
-
+	change_color_filters: function() {
+		config.grayscale = document.getElementById("grayscale").checked;
+		config.sepia = document.getElementById("sepia").checked;
+	},
     // computeFrame
 	// do the image processing for one frame
     // reads frame data from rgb picture ctx
@@ -70,6 +78,23 @@ var processor = {
 			r = r + offset + offset_r;
 			g = g + offset + offset_g;
 			b = b + offset + offset_b;
+
+			if (config.sepia) {
+				// https://www.cs.utexas.edu/~scottm/cs324e/Assignments/A5_Images.htm
+				var R = (r * 0.393) + (g * 0.769) + (b * 0.189)
+				var G = (r * 0.349) + (g * 0.686) + (b * 0.168)
+				var B = (r * 0.272) + (g * 0.534) + (b * 0.131)
+				r = R;
+				g = G;
+				b = B;
+			}
+
+			if (config.grayscale) {
+				var Y = 0.3 * r + 0.59 * g + 0.11 * b;
+				r = Y;
+				g = Y;
+				b = Y;
+			}
 
             frame.data[i * 4 + 0] = r;
             frame.data[i * 4 + 1] = g;

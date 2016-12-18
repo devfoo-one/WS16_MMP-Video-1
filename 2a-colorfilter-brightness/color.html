@@ -51,7 +51,9 @@
     Brightness R: <input id="color_offset_r" type="range"  min="-100" max="100" onchange="processor.change_color_offset()"/>
     Brightness G: <input id="color_offset_g" type="range"  min="-100" max="100" onchange="processor.change_color_offset()"/>
     Brightness B: <input id="color_offset_b" type="range"  min="-100" max="100" onchange="processor.change_color_offset()"/>
-
+    <br/>
+    b/w: <input id="grayscale" type="checkbox" onchange="processor.change_color_filters()"/> <br/>
+    sepia: <input id="sepia" type="checkbox" onchange="processor.change_color_filters()"/><br/>
 	<!-- camera button and script -->
     <hr>
 	<a href="#" onclick="startCam()">Start Camera</a>
