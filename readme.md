@@ -14,6 +14,7 @@
 <source src="../assets/v2b.webm" type="video/webm" />
 <source src="../assets/v2b.mp4" type="video/mp4" />
 ```
+
 zu
 
 ```html
@@ -94,6 +95,8 @@ if (config.grayscale) {
 }
 ```
 
+![chroma key bw](screens/chroma_key_bw.png)
+
 #### Aufgabe 2b
 
 ```javascript
@@ -107,6 +110,9 @@ if (config.sepia) {
 	b = B;
 }
 ```
+
+![chroma key sepia](screens/chroma_key_sepia_brightness.png)
+
 ### Aufgabe 3
 
 - Kopie der `colorkey-green.html` zu `colorkey-blue.html`
@@ -123,3 +129,5 @@ if (r < 100 && g < 100 && b > 100) {
 ### Aufgabe 4
 
 Hierfür musste nur noch die `camera.js` ins Projekt `2a-colorfilter-brightness` kopiert werden. Der Rest war bereits implementiert.
+
+![color key blue livecam](screens/color_key_blue_livecam.PNG)
